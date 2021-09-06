@@ -58,7 +58,10 @@ public class FloatItemViewManager {
                 smallWindowParams = new WindowManager.LayoutParams();
                 // API level 19 之后 TYPE_TOAST 可以接受事件且不需要申请权限
                 // TYPE_APPLICATION 只能配合Activity在当前APP使用
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+					smallWindowParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+				}
+                else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
                     smallWindowParams.type = WindowManager.LayoutParams.TYPE_TOAST;
                 } else {
                     smallWindowParams.type = WindowManager.LayoutParams.TYPE_PHONE;
